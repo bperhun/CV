@@ -8,6 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import ua.project.entity.Category;
 import ua.project.entity.UserEntity;
 import ua.project.enumeration.Role;
 import ua.project.repository.UserRepository;
@@ -40,6 +41,11 @@ public class MyProjectApplication extends SpringBootServletInitializer {
 			entity.setPassword(encoder.encode(adminPassword));
 			entity.setRole(Role.ROLE_ADMIN);
 			entity.setActivated(true);
+			entity.setUserDetails(new ua.project.entity.UserDetails());
+//			entity.getUserDetails().setCategory(new Category());
+			entity.setCategory(new Category());
+			
+			
 			
 			userRepository.save(entity);
 		}

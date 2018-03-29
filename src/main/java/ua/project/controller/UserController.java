@@ -35,12 +35,16 @@ public class UserController {
 	@GetMapping
 	@PreAuthorize("hasAnyRole('ADMIN', 'USER')")
 	public String showProfile(Model model, Principal principal) throws IOException {
-		UserEntity user =  userService.findUserByEmail(principal.getName());
+		//UserEntity user = userService.findUserByEmail(principal.getName());
+		UserEntity user = userService.findAllInf(principal.getName());
+		//UserEntity user =  userService.findUserByEmail(principal.getName());
 		user.setImagePath(CustomFileUtils.getImage("user_"+user.getId(), user.getImagePath()));
 		model.addAttribute("userProfile", UserMapper.entityToUserProfile(user));
 		return "user/profile";
 		
 	}
+	
+
 	
 	@GetMapping("/profile/image")
 	public String uploadImage(Model model) {
@@ -50,7 +54,6 @@ public class UserController {
 	@PostMapping("/profile/image")
 	public String saveImage(@ModelAttribute("uploadModel") ImageRequest request,Principal principal) throws IOException {
 		UserEntity entity = userService.findUserByEmail(principal.getName());
-		
 		entity.setImagePath(request.getFile().getOriginalFilename());
 		CustomFileUtils.createImage("user_"+entity.getId(), request.getFile());
 		userService.updateUser(entity);

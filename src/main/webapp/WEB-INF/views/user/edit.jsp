@@ -89,9 +89,9 @@
                                 <div class="bot-border"></div>
 
                                  <div class="col-sm-5 col-xs-6 tital ">Категорія:</div>
-                               <%--  <div class="col-sm-7"><form:input path="userDetails.category" cssClass="form-control"/></div>  --%>
-                    <%--             <div class="col-sm-7"> <form:checkbox path="userDetails.category" value="A"/></div> 
-                                <div class="col-sm-7"> <form:checkbox path="userDetails.category" value="B"/></div> --%> 
+                                 <form:checkbox path="category.category" value="A" label="A"/>
+		<form:checkbox path="category.category" value="B" label="B"/>
+		<form:checkbox path="category.category" value="C" label="C"/>  
 
                                 <div class="clearfix"></div>
                                 <div class="bot-border"></div>  

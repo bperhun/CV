@@ -51,6 +51,10 @@ public class UserEntity extends BaseEntity {
 	@ManyToMany
 	@JoinTable(name = "ordering", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "client_id"))
 	List<Client> clients1 = new ArrayList<>();
+	
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "category_id")
+	Category category;
 
 	public UserEntity() {
 
@@ -127,6 +131,16 @@ public class UserEntity extends BaseEntity {
 	
 	
 	
+
+	public Category getCategory() {
+		return category;
+	}
+
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 
 	public String getImagePath() {
 		return imagePath;

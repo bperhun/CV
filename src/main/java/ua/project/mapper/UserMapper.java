@@ -34,13 +34,14 @@ public interface UserMapper {
 		request.setRole(entity.getRole());
 		request.setActivated(entity.isActivated());
 		request.setImagePath(entity.getImagePath());
-		
 		request.setLastName(entity.getUserDetails().getLastName());
 		request.setFirstName(entity.getUserDetails().getFirstName());
-//		request.setPhoneNumber(entity.getUserDetails().getPhoneNumber());
-//		request.setCountry(entity.getUserDetails().getCountry());
-//		request.setDistrict(entity.getUserDetails().getDistrict());
-//		request.setCategory(entity.getUserDetails().getCategory());
+		request.setPhoneNumber(entity.getUserDetails().getPhoneNumber());
+		request.setCountry(entity.getUserDetails().getCountry());
+		request.setDistrict(entity.getUserDetails().getDistrict());
+		request.setCategory(entity.getCategory().getCategory());
+	
+	
 		
 		
 		return request;

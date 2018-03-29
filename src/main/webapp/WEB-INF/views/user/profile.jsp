@@ -23,7 +23,7 @@
                             <div class="box-body">
                                 <div class="col-sm-6">
                                     <div align="center"> 
-                                    <img alt="User Pic" src="data:img/png; base64, ${userProfile.imagePath}" id="profile-image1" class="img-circle img-responsive">
+                                    <img alt="User Pic" src="data:image/jpg; base64, ${userProfile.imagePath}" id="profile-image1" class="img-circle img-responsive">
 
 <br>
 
@@ -65,7 +65,9 @@
                                 <div class="bot-border"></div>
 
                                 <div class="col-sm-5 col-xs-6 tital ">Категорія:</div>
-                                <div class="col-sm-7">${userProfile.category}</div>
+                                  <c:forEach items="${userProfile.category}"  var="c">
+		<b ">${c}</b>
+	</c:forEach>  
 
                                 <div class="clearfix"></div>
                                 <div class="bot-border"></div> 

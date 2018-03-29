@@ -3,6 +3,7 @@ package ua.project.domain;
 
 
 
+import java.util.Arrays;
 import java.util.List;
 
 import ua.project.entity.Category;
@@ -18,7 +19,7 @@ public class UserProfileRequest {
 	private String phoneNumber; 
 	private String country;
 	private String district;
-	private List<Category> category;
+	private String[] category;
 	private String imagePath;
 	private Role role;
 	private boolean isActivated;
@@ -115,15 +116,21 @@ public class UserProfileRequest {
 
 
 
-	public List<Category> getCategory() {
+
+
+	public String[] getCategory() {
 		return category;
 	}
 
 
 
-	public void setCategory(List<Category> category) {
+
+
+	public void setCategory(String[] category) {
 		this.category = category;
 	}
+
+
 
 
 
@@ -150,6 +157,11 @@ public class UserProfileRequest {
 	public void setActivated(boolean isActivated) {
 		this.isActivated = isActivated;
 	}
+
+
+
+
+
 	
 	
 }

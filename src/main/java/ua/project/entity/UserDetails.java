@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -36,10 +37,12 @@ public class UserDetails extends BaseEntity {
 
 	@OneToOne(mappedBy = "userDetails", cascade = CascadeType.ALL)
 	UserEntity user;
+	
+//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	@JoinColumn(name = "category_id")
+//	Category category;
 
-	@OneToMany(mappedBy = "userDetails", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
-			CascadeType.REFRESH })
-	List<Category> category = new ArrayList<>();
+	
 
 	public UserDetails() {
 
@@ -95,14 +98,23 @@ public class UserDetails extends BaseEntity {
 		this.user = user;
 	}
 
-	public List<Category> getCategory() {
-		return category;
-	}
 
-	public void setCategory(List<Category> category) {
-		this.category = category;
-	}
-	
+
+
+
+
+//
+//	public Category getCategory() {
+//		return category;
+//	}
+//
+//
+//
+//	public void setCategory(Category category) {
+//		this.category = category;
+//	}
+
+
 
 	public String getCountry() {
 		return country;

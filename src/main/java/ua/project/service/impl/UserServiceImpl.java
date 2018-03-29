@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ua.project.domain.mail.Mail;
+import ua.project.entity.Category;
 import ua.project.entity.UserDetails;
 import ua.project.entity.UserEntity;
 import ua.project.repository.UserRepository;
@@ -37,12 +38,14 @@ public class UserServiceImpl implements UserService {
 		String token = TokenGenerator.generate(100);
 		entity.setToken(token);
 		entity.setActivated(false);
+		entity.setUserDetails(new UserDetails());
+		entity.setCategory(new Category());
 		
 		
 		
 		userRepository.save(entity);
 		
-		// CustomFileUtils.createFolder("user_"+entity.getId());
+		 CustomFileUtils.createFolder("user_"+entity.getId());
 		// sendEmail(token, entity);
 	}
 	 
