@@ -13,11 +13,12 @@ import ua.project.validator.CkeckIfUserEmailExist;
 @CheckPasswordsMatch
 public class RegisterRequest {
 
-	@Pattern(regexp = "[a-zA-Z].+[a-zA-Z0-9+.]+@[A-Za-z]{2,5}+.[A-Za-z]{2,4}$", message = "Typed email has not correct format")
+	@Pattern(regexp = "[a-zA-Z].+[a-zA-Z0-9+.]+@[A-Za-z]{2,5}+.[A-Za-z]{2,4}$", message = "\r\n" + 
+			"Введена електронна адреса не правильного формату")
 	@CkeckIfUserEmailExist
-	@NotEmpty private String email;
-	@NotEmpty(message = "bla") private String password;
-	@NotEmpty(message = "bla") private String passwordConfirmation;
+	@NotEmpty(message = "Поле адреси не можу бути пусте")  private String email;
+	@NotEmpty(message = "Порожнє поле пароль")  private String password;
+	@NotEmpty(message = "Порожнє поле підтвердження паролю") private String passwordConfirmation;
 	
 	public RegisterRequest() {
 		

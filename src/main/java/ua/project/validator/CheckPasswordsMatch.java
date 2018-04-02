@@ -13,7 +13,7 @@ import javax.validation.Payload;
 @Constraint(validatedBy = CheckPasswordsMatchValidator.class)
 public @interface CheckPasswordsMatch {
 
-	String message() default "Entered passwords not match";
+	String message() default "Введені паролі не збігаються";
 	Class<?>[] groups() default{};
 	Class<? extends Payload>[] payload() default {};
 }

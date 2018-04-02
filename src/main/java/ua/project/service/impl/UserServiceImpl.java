@@ -2,12 +2,22 @@ package ua.project.service.impl;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import ua.project.domain.SimpleFilter;
 import ua.project.domain.mail.Mail;
 import ua.project.entity.Category;
 import ua.project.entity.UserDetails;
@@ -93,9 +103,22 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
+	public Page<UserEntity> getPagebleUsers(int pageNumber, int pageSize, String sort, String sortByField) {
+		PageRequest request =
+				new PageRequest(
+						pageNumber - 1,
+						pageSize,
+						Sort.Direction.ASC,
+						"id");
+		return userRepository.findAll(request);
+	}
+
+	@Override
 	public List<UserEntity> findAllUsers() {
 		
 		return userRepository.findAll();
 	}
+
+	
 
 }

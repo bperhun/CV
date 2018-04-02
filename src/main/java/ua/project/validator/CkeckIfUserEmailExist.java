@@ -15,7 +15,8 @@ import javax.validation.Payload;
 @Constraint(validatedBy = CkeckIfUserEmailExistValidator.class)
 public @interface CkeckIfUserEmailExist {
 
-	String message() default "Entered email adress already exist";
+	String message() default "\r\n" + 
+			"Введена адреса електронної пошти вже існує";
 	
 	Class<?>[] groups() default {};
 	

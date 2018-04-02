@@ -36,7 +36,7 @@ public final class CustomFileUtils {
 		if (!file.isEmpty() && file != null) {
 			BufferedImage image = ImageIO.read(new ByteArrayInputStream(file.getBytes()));
 			File destination = new File(createFolder(folderName).getAbsolutePath() + SEPARATOR + file.getOriginalFilename());
-			ImageIO.write(image, "{png,jpg}", destination);
+			ImageIO.write(image, "png", destination);
 		}
 	}
 	

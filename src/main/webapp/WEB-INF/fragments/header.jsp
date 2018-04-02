@@ -9,7 +9,7 @@
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
                </button>
-                <a class="navbar-brand go_to" href="#home"><img src="/resources/img/unnamed.png" ></a>
+                <a class="navbar-brand go_to" href="${pageContext.request.contextPath}/"><img src="/resources/img/unnamed.png" ></a>
             </div>
             <sec:authorize access="isAnonymous()">
             <div class="navbar-collapse collapse">
@@ -20,18 +20,27 @@
                     <li class="register"><a href="#register" style="color:white" class="go_to">Реєстрація</a></li>
                     </ul>
                     </sec:authorize>
+ 
  <sec:authorize access="isAuthenticated()">
   <ul class="nav navbar-nav navbar-right">
-		     		<sec:authentication property="principal.username" var="username"/>
-	     			<%-- <li ><a cssStyle="color:white;"> ${username}</a></li> --%>
-
+		     		
 					<c:url var="logoutUrl" value="/logout" />
 					<form:form action="${logoutUrl}" method="post" cssStyle="padding-top: 7px;">
 						<li class="out"><input class="btn btn-danger btn-lg" type="submit" value="Вихід" /></li>
 					</form:form>
 					</ul>
 			</sec:authorize>
-                
+                                   <sec:authorize access="hasRole('ROLE_ADMIN')">
+  <ul class="nav navbar-nav navbar-right">
+		     		
+ <form:form action="/users" cssStyle="padding-top: 7px;">
+  <a href="/users" class="btn btn-info btn-lg">
+  Редагувати користувачів
+</a>
+
+</form:form>
+					</ul>
+</sec:authorize>
             </div>
         </div>
     </div>

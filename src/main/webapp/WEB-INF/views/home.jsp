@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <div class="container-fluid" id="home">
+    <div class="container-fluid" id="home" >
         <div id="myCarousel" class="carousel slide" data-interval="5000">
             <!-- Индикаторы для карусели -->
             <ol class="carousel-indicators">
@@ -53,36 +53,34 @@
   </a>
         </div>
     </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="container-fluid search" id="search">
 
         <h2>Пошук водіїв</h2>
+ <form:form action="/users/pages/" >
+  <a href="/users/pages/" class="button">
+  <span class="submit">Нажми</span> меня<span class="submit">!</span>
+</a>
 
-        <div class="serc">
-            <form>
-                <div class="form-group">
-                    <label>Місто</label>
-                    <input type="text" class="form-control" placeholder="Введіть місто">
-                </div>
-                <div class="form-group">
-                    <label>Район</label>
-                    <input type="text" class="form-control" placeholder="Введіть район">
-                </div>
-                <div class="form-group">
-                    <label for="sel1">Категорія:</label>
-                    <select class="form-control" id="sel1">
-    <option>A</option>
-    <option>A1</option>
-    <option selected>B</option>
-    <option>C1</option>
-    <option>C</option>
-  </select>
-                </div>
-
-                <button type="submit" class="btn btn-default">Пошук</button>
-
-            </form>
-        </div>
-    </div>
+</form:form>
+    </div> 
+    
+    	
+    
+    
+    
+   
+    
+    
+   <sec:authorize access="isAnonymous()"> 
     <div class="container-fluid search1" id="register">
 
         <h2>Реєстрація</h2>
@@ -148,4 +146,5 @@
 				</p>
 			</div>
     </div>
+    </sec:authorize>
      

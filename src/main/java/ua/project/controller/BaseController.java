@@ -1,15 +1,21 @@
 package ua.project.controller;
 
+import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,10 +23,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import ua.project.domain.RegisterRequest;
+import ua.project.domain.SimpleFilter;
 import ua.project.entity.UserDetails;
 import ua.project.entity.UserEntity;
 import ua.project.mapper.UserMapper;
 import ua.project.service.UserService;
+import ua.project.service.utils.CustomFileUtils;
 
 
 
@@ -61,6 +69,46 @@ public class BaseController {
 		
 		
 	}
+//	public String showAllUsers(Model model) throws IOException {
+//		List<UserEntity>  userEntities = userService.findAllUsers();
+//		
+//		for (int i = 0; i < userEntities.size(); i++) {
+//			UserEntity userEntity = userEntities.get(i);
+//			String image = CustomFileUtils.getImage("user_"+userEntity.getId(), userEntity.getImagePath());
+//			userEntities.get(i).setImagePath(image);
+//		}
+//		
+//		
+//		model.addAttribute("users", userEntities);
+//		return "user/users";
+//	}
+	@GetMapping("/users/pages/{pageNumber}")
+	public String showAllUsers(
+			@PathVariable("pageNumber") int pageNumber,
+			Model model) throws IOException{
+		List<UserEntity>  userEntities = userService.findAllUsers();
+		for (int i = 0; i < userEntities.size(); i++) {
+			UserEntity userEntity = userEntities.get(i);
+			String image = CustomFileUtils.getImage("user_"+userEntity.getId(), userEntity.getImagePath());
+			userEntities.get(i).setImagePath(image);
+		}
+		Page<UserEntity> page = userService.getPagebleUsers(pageNumber, 20, "ASC", "id");
+		
+		int currentPage = page.getNumber()+1;
+		int begin = Math.max(1, currentPage - 10);
+		int end = Math.min(begin + 10, page.getNumber());
+		
+		model.addAttribute("coursesList",page);
+		model.addAttribute("beginIndex",begin);
+		model.addAttribute("endIndex",end);
+		model.addAttribute("currentIndex",currentPage);
+		model.addAttribute("coursesListByPageSize",page.getContent());
+		model.addAttribute("users", userEntities);
+		return "user/users";
+	}
+	
+
+	
 	@GetMapping("verify")
 	public String verifyUser(@RequestParam("token") String token,
 			@RequestParam("userid") String useridStr,
@@ -85,5 +133,8 @@ public class BaseController {
 		
 		return "verify/verify-success";
 	}
+	
+
+
 
 }

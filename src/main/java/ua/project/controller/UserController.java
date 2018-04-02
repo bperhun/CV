@@ -33,11 +33,9 @@ public class UserController {
 	@Autowired private UserService userService;
 	
 	@GetMapping
-	@PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	public String showProfile(Model model, Principal principal) throws IOException {
-		//UserEntity user = userService.findUserByEmail(principal.getName());
 		UserEntity user = userService.findAllInf(principal.getName());
-		//UserEntity user =  userService.findUserByEmail(principal.getName());
 		user.setImagePath(CustomFileUtils.getImage("user_"+user.getId(), user.getImagePath()));
 		model.addAttribute("userProfile", UserMapper.entityToUserProfile(user));
 		return "user/profile";
@@ -61,7 +59,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/profile/edit")
-	public String edituser(Model model,Principal principal) {
+	public String editUser(Model model,Principal principal) {
 		UserEntity entity = userService.findAllInf(principal.getName());
 		
 		model.addAttribute("editUserModel", entity);
@@ -70,7 +68,7 @@ public class UserController {
 		return "user/edit";
 
 	}
-	
+
 
 
 	@PostMapping("profile/edit")
@@ -83,16 +81,5 @@ public class UserController {
 		return "redirect:/user";
 	}
 	
-	@GetMapping("/users")
-	public String showAllUsers(Model model) throws IOException {
-		List<UserEntity>  userEntities = userService.findAllUsers();
-		
-		for (int i = 0; i < userEntities.size(); i++) {
-			UserEntity userEntity = userEntities.get(i);
-			String image = CustomFileUtils.getImage("user_"+userEntity.getId(), userEntity.getImagePath());
-			userEntities.get(i).setImagePath(image);
-		}
-		model.addAttribute("users", userEntities);
-		return "user/users";
-	}
+
 }
