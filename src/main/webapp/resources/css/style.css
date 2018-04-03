@@ -379,3 +379,33 @@ margin: 1em 0 0.5em 0;
 	 
 	 
 	 
+	 
+	 .flat3 {
+	padding: 15px 24px; //отступы, отвечающие за размеры кнопки (в пикселях)
+	font: normal 15px/22px Verdana; //тип, размер, межстрочный интервал и вид шрифта
+	text-transform: uppercase; //преобразование текста в заглавные символы
+	color: #E57332; //цвет текста кнопки в статичном виде
+	border: 2px solid #E57332; //размер и цвет рамки/обводки кнопки в статичном виде
+	border-radius: 5px; //скругление углов кнопки (в пикселях)
+	background-color: #fff; //цвет кнопки в статичном виде
+	-webkit-transition:border .25s linear, color .25s linear,background-color .25s linear;
+	transition:border .25s linear, color .25s linear,background-color .25s linear;
+	-webkit-font-smoothing: subpixel-antialiased;
+	text-align: center; //текст кнопки по центру
+	cursor: pointer;
+	-webkit-user-select: none;
+	display: inline-block;
+	}
+	
+.flat3:hover {
+	color: #fff; //цвет текста кнопки при наведении
+	background-color: #E57332; //цвет кнопки при наведении
+	border: 2px solid #E57332; //размер и цвет рамки/обводки кнопки при наведении
+	}
+	
+.flat3:active {
+	color: #fff; //цвет текста кнопки при нажатии
+	background-color: #FF813A; //цвет кнопки при нажатии
+	border: 2px solid #FF813A; //размер и цвет рамки/обводки кнопки при нажатии
+	}
+	 

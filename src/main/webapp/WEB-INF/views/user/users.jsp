@@ -9,12 +9,12 @@
 	
 		
 <sec:authorize access="isAnonymous()">		
-<c:url var="firstUrl" value="${pageContext.request.contextPath}/user/users/pages/1?field=${sortByField}&sort=${sortDirection}&total=${totalPerPage}" />
+<%-- <c:url var="firstUrl" value="${pageContext.request.contextPath}/user/users/pages/1?field=${sortByField}&sort=${sortDirection}&total=${totalPerPage}" />
 	<c:url var="lastUrl" value="${pageContext.request.contextPath}/user/users/pages/${coursesList.totalPages}?field=${sortByField}&sort=${sortDirection}&total=${totalPerPage}" />
 	<c:url var="prevUrl" value="${pageContext.request.contextPath}/user/users/pages/${currentIndex - 1}?field=${sortByField}&sort=${sortDirection}&total=${totalPerPage}" />
-	<c:url var="nextUrl" value="${pageContext.request.contextPath}/user/users/pages/${currentIndex + 1}?field=${sortByField}&sort=${sortDirection}&total=${totalPerPage}" />
+	<c:url var="nextUrl" value="${pageContext.request.contextPath}/user/users/pages/${currentIndex + 1}?field=${sortByField}&sort=${sortDirection}&total=${totalPerPage}" /> --%>
 <div class="container-fluid ">
-<ul class="pagination">
+<%-- <ul class="pagination">
 			<c:choose>
 				<c:when test="${currentIndex == 1}">
 					<li class="disabled"><a href="#">&lt;&lt;</a></li>
@@ -48,7 +48,7 @@
 					<li><a href="${lastUrl}">&gt;&gt;</a></li>
 				</c:otherwise>
 			</c:choose>
-		</ul>
+		</ul> --%>
 <c:forEach items="${users }" var="user">
 
   

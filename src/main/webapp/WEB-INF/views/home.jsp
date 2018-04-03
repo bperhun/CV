@@ -62,12 +62,15 @@
     
     
     
-    <div class="container-fluid search" id="search">
+    <div class="container-fluid search form-4" id="search" style="padding-top:20%">
 
         <h2>Пошук водіїв</h2>
- <form:form action="/users/pages/" >
-  <a href="/users/pages/" class="button">
-  <span class="submit">Нажми</span> меня<span class="submit">!</span>
+<%--  <form:form action="/views/user/users" >
+<input  type="submit"  value="Пошук" style="width:30%"> 
+</form:form> --%>
+ <form:form action="/users" cssStyle="padding-top: 7px;">
+  <a href="/users" class="btn btn-default btn-lg" style="width:30%">
+  Пошук
 </a>
 
 </form:form>

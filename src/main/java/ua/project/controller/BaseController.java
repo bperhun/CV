@@ -69,43 +69,44 @@ public class BaseController {
 		
 		
 	}
-//	public String showAllUsers(Model model) throws IOException {
-//		List<UserEntity>  userEntities = userService.findAllUsers();
-//		
-//		for (int i = 0; i < userEntities.size(); i++) {
-//			UserEntity userEntity = userEntities.get(i);
-//			String image = CustomFileUtils.getImage("user_"+userEntity.getId(), userEntity.getImagePath());
-//			userEntities.get(i).setImagePath(image);
-//		}
-//		
-//		
-//		model.addAttribute("users", userEntities);
-//		return "user/users";
-//	}
-	@GetMapping("/users/pages/{pageNumber}")
-	public String showAllUsers(
-			@PathVariable("pageNumber") int pageNumber,
-			Model model) throws IOException{
+	@GetMapping("/users")
+	public String showAllUsers(Model model) throws IOException {
 		List<UserEntity>  userEntities = userService.findAllUsers();
+		
 		for (int i = 0; i < userEntities.size(); i++) {
 			UserEntity userEntity = userEntities.get(i);
 			String image = CustomFileUtils.getImage("user_"+userEntity.getId(), userEntity.getImagePath());
 			userEntities.get(i).setImagePath(image);
 		}
-		Page<UserEntity> page = userService.getPagebleUsers(pageNumber, 20, "ASC", "id");
 		
-		int currentPage = page.getNumber()+1;
-		int begin = Math.max(1, currentPage - 10);
-		int end = Math.min(begin + 10, page.getNumber());
 		
-		model.addAttribute("coursesList",page);
-		model.addAttribute("beginIndex",begin);
-		model.addAttribute("endIndex",end);
-		model.addAttribute("currentIndex",currentPage);
-		model.addAttribute("coursesListByPageSize",page.getContent());
 		model.addAttribute("users", userEntities);
 		return "user/users";
 	}
+	
+//	public String showAllUsers(
+//			@PathVariable("pageNumber") int pageNumber,
+//			Model model) throws IOException{
+//		List<UserEntity>  userEntities = userService.findAllUsers();
+//		for (int i = 0; i < userEntities.size(); i++) {
+//			UserEntity userEntity = userEntities.get(i);
+//			String image = CustomFileUtils.getImage("user_"+userEntity.getId(), userEntity.getImagePath());
+//			userEntities.get(i).setImagePath(image);
+//		}
+//		Page<UserEntity> page = userService.getPagebleUsers(pageNumber, 20, "ASC", "id");
+//		
+//		int currentPage = page.getNumber()+1;
+//		int begin = Math.max(1, currentPage - 10);
+//		int end = Math.min(begin + 10, page.getNumber());
+//		
+//		model.addAttribute("coursesList",page);
+//		model.addAttribute("beginIndex",begin);
+//		model.addAttribute("endIndex",end);
+//		model.addAttribute("currentIndex",currentPage);
+//		model.addAttribute("coursesListByPageSize",page.getContent());
+//		model.addAttribute("users", userEntities);
+//		return "user/users";
+//	}
 	
 
 	
