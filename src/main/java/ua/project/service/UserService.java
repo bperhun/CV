@@ -22,6 +22,8 @@ public interface UserService {
 	
 	void updateUser(UserEntity entity);
 	
+	void deleteUser(UserEntity entity);
+	
 	
 	
 	UserEntity findAllInf(String email);

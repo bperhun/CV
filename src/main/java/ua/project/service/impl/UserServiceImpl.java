@@ -56,7 +56,8 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(entity);
 		
 		 CustomFileUtils.createFolder("user_"+entity.getId());
-		// sendEmail(token, entity);
+		 //
+		 sendEmail(token, entity);
 	}
 	 
 	private void sendEmail(String token,UserEntity entity) {
@@ -101,6 +102,12 @@ public class UserServiceImpl implements UserService {
 
 
 
+
+	@Override
+	public void deleteUser(UserEntity entity) {
+		userRepository.delete(entity);
+		
+	}
 
 	@Override
 	public Page<UserEntity> getPagebleUsers(int pageNumber, int pageSize, String sort, String sortByField) {
