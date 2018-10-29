@@ -80,6 +80,8 @@ public class UserController {
 		
 		return "redirect:/user";
 	}
+
+
 	
 	@GetMapping("/{userId}/users")
 	public String showEditUserPage(
@@ -89,26 +91,7 @@ public class UserController {
 		return "admin/edit";
 	}
 	
-	@GetMapping("/user/users")
-	public String deleteUser(Model model,Principal principal) {
-		UserEntity entity = userService.findAllInf(principal.getName());
-		
-		model.addAttribute("user1", entity);
-		
-		
-		return "/users";
 
-	}
-	@PostMapping("/users/delete")
-	public String deleteUser(@ModelAttribute("user1") UserEntity entity) {
-		
-		
-		userService.deleteUser(entity);
-	
-	
-		
-		return "redirect:/users";
-	}
 	
 
 }

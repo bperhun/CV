@@ -23,6 +23,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
+	
 
 	<dependencies>
 		<dependency>
@@ -35,6 +36,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
+
 
 		<!-- Mail sending -->
 		<dependency>
@@ -80,7 +82,10 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency>  
+
+
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -125,6 +130,19 @@
 			<artifactId>tiles-extras</artifactId>
 			<version>3.0.8</version>
 		</dependency>
+		
+		<dependency>
+  <groupId>jstl</groupId>
+  <artifactId>jstl</artifactId>
+  <version>1.2</version>
+  <scope>compile</scope>
+</dependency>
+<dependency>
+  <groupId>taglibs</groupId>
+  <artifactId>standard</artifactId>
+  <version>1.1.2</version>
+  <scope>compile</scope>
+</dependency>
 
 
 		<!-- Display Tag -->

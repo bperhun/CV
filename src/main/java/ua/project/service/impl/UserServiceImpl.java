@@ -103,6 +103,12 @@ public class UserServiceImpl implements UserService {
 
 
 
+//	@Override
+//	public UserEntity deleteUser(String email) {
+//		
+//		return userRepository.delUser(email);
+//	}
+
 	@Override
 	public void deleteUser(UserEntity entity) {
 		userRepository.delete(entity);

@@ -55,6 +55,7 @@
                     <div class="panel-heading">
                         <h4>Редагувати користувача</h4>
                     </div>
+                   
                     <div class="panel-body" >
 
                         <div class="box box-info">

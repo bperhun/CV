@@ -44,8 +44,19 @@ public class AdminController {
 		
 		return "redirect:/users";
 	}
+	
 
 
+	@PostMapping("/users")
+	public String delUser(@ModelAttribute("user") Principal principal ){
+		UserEntity entity = userService.findUserByEmail(principal.getName());
+		userService.deleteUser(entity);
+
+		
+		
+		
+		return "redirect:/users";
+	}
 
 
 }

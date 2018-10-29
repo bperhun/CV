@@ -16,12 +16,15 @@
                     <div class="panel-heading">
                         <h4>Редагувати користувача</h4>
                     </div>
+                    
+                    
                     <div class="panel-body" >
 
                         <div class="box box-info">
 
                             <div class="box-body">
       <form:form action="${pageContext.request.contextPath}/admin/${user.id}/edit" modelAttribute="user">
+      
                                 <div class="col-sm-6">
                                     <h4 style="color:#00b1b1;">Ім'я<form:input path="userDetails.firstName" cssClass="form-control"/>  Прізвище <form:input path="userDetails.lastName" cssClass="form-control"/></h4>
                                     </span>
@@ -70,8 +73,15 @@
 								<input type="submit" class="btn btn-primary" value="Зберегти">
 							</span>
 						</div>
+					
+
+
 
 </form:form>
+  <form:form modelAttribute="user" method="POST" action="/admin/users" >
+<input type="submit" value="Видалити" class="btn btn-error">
+</form:form>
+
 
                             </div>
                         </div>

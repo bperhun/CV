@@ -137,6 +137,7 @@
     </sec:authorize>
 
  <sec:authorize access="hasRole('ROLE_ADMIN')">	  
+ 
 
 <div class="container-fluid ">
 <c:forEach items="${users }" var="user">
@@ -214,7 +215,7 @@
                         
 <a href="${pageContext.request.contextPath }/admin/${user.id}/edit" class="btn btn-success">Редагувати дані користувача</a><br/>
 
- 
+     
 
 
 

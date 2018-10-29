@@ -22,6 +22,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 	@Query(" select u from UserEntity u join fetch u.userDetails ud join fetch u.category where u.email = :email ")
 	UserEntity findAllInf(@Param("email") String email);
 
+	@Query("delete from UserEntity u where u.email = :email")
+	UserEntity delUser(@Param("email") String email);
 	
 	
 }
